@@ -31,6 +31,8 @@ Abaixo estão detalhes sobre a estrutura do projeto e como iniciar a aplicação
     :construction:  Projeto Em Andamento  :construction:
 </h4>
 
+O projeto esta ainda em andamento e sendo construido aos poucos com seu Front-End no repositório: https://github.com/AdrianFurquim/VitaBloom-Front-End.git
+
 <h4 align="center"> 
     📁 - Iniciando o Projeto
 </h4>
