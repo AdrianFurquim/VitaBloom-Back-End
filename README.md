@@ -18,7 +18,6 @@ Abaixo estão detalhes sobre a estrutura do projeto e como iniciar a aplicação
       <li>Java</li>
       <li>Spring Boot</li>
       <li>Spring Secutity</li>
-      <li>Java</li>
       <li>CRUD</li>
       <li>MVC (Model, Controller, View)</li>
       <li>Mavin</li>
