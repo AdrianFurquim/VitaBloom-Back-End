@@ -23,9 +23,6 @@ public class ItemCarrinho {
 
     private int quantidade;
 
-
-    
-
     public Long getId() {
         return id;
     }

@@ -19,7 +19,6 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
-            .requiresChannel(channel -> channel.anyRequest().requiresSecure())
             .csrf().disable() // Necessário para permitir acesso ao POST
             .httpBasic(Customizer.withDefaults())
             .authorizeHttpRequests(
@@ -49,4 +48,3 @@ public class WebSecurityConfig {
          return new InMemoryUserDetailsManager(user);
      }
 }
-
