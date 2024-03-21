@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import vita.bloom.front.end.model.AdicionarItemRequest;
 import vita.bloom.front.end.model.Carrinho;
+import vita.bloom.front.end.model.ItemCarrinho;
+import vita.bloom.front.end.model.ItemCarrinhoDTO;
 import vita.bloom.front.end.repository.CarrinhoRepository;
+import vita.bloom.front.end.repository.ItemCarrinhoRepository;
 
 @RestController
 @CrossOrigin
@@ -24,10 +27,14 @@ public class ControllerCarrinho {
     @Autowired
     CarrinhoRepository carrinhoRepository;
     @Autowired
-    CarrinhoService carrinhoService;
+    CarrinhoService carrinhoService;    
+    @Autowired
+    ItemCarrinhoRepository itemCarrinhoRepository;
 
     @Autowired
     private CarrinhoService carrinhoServicee;
+
+
 
     @GetMapping("/vitabloom/carrinho")
     public List<Carrinho> verCarrinho(){
@@ -63,6 +70,15 @@ public class ControllerCarrinho {
     @PostMapping("/carrinho/adicionar-itemm")
     public void adicionarItemAoCarrinhoo(@RequestBody AdicionarItemRequest request) {
         carrinhoService.adicionarItemAoCarrinho(request);
+    }
+    // @GetMapping("/carrinho/itens/ver")
+    // public Iterable<ItemCarrinho> verItensCarrinho(){
+    //     return carrinhoService.findAll();
+    // }
+
+    @GetMapping("/vitabloom/carrinho/ver")
+    public List<ItemCarrinhoDTO> verItensCarrinho(){
+        return carrinhoService.findAllItems();
     }
 
 }

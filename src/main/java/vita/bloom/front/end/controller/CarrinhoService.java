@@ -1,6 +1,8 @@
 package vita.bloom.front.end.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +51,27 @@ public class CarrinhoService {
 
     public Optional<ItemCarrinho> getItemDoCarrinho(Long itemId) {
         return itemCarrinhoRepository.findById(itemId);
+    }
+    public Iterable<ItemCarrinho> findAll() {
+        return itemCarrinhoRepository.findAll();
+    }
+
+    public List<ItemCarrinhoDTO> findAllItems() {
+        List<ItemCarrinho> itensCarrinho = (List<ItemCarrinho>) itemCarrinhoRepository.findAll();
+        List<ItemCarrinhoDTO> itensCarrinhoDTO = new ArrayList<>();
+
+        for (ItemCarrinho itemCarrinho : itensCarrinho) {
+            ItemCarrinhoDTO itemCarrinhoDTO = new ItemCarrinhoDTO();
+            itemCarrinhoDTO.setProdutoId(itemCarrinho.getId());
+            itemCarrinhoDTO.setQuantidade(itemCarrinho.getQuantidade());
+            // Preencher o produto
+            itemCarrinhoDTO.setProduto(produtoRepository.findById(itemCarrinho.getProduto().getIdProduto()));
+            // Preencher o carrinho
+            itemCarrinhoDTO.setCarrinho(null);
+
+            itensCarrinhoDTO.add(itemCarrinhoDTO);
+        }
+
+        return itensCarrinhoDTO;
     }
 }

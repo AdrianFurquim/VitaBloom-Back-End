@@ -55,5 +55,6 @@ public class Produto {
     public void setIdProduto(Long idProduto) {
         this.idProduto = idProduto;
     }
+
     
 }

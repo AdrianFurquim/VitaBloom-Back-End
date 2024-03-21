@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +18,6 @@ import vita.bloom.front.end.repository.ItemCarrinhoRepository;
 @Entity
 public class Carrinho {
 
-    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,4 +52,10 @@ public class Carrinho {
     public void setItens(List<ItemCarrinho> itens) {
         this.itens = itens;
     }
+
+    public Long getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    }
+
 }

@@ -1,5 +1,8 @@
 package vita.bloom.front.end.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,14 +17,28 @@ public class ItemCarrinho {
     private Long id;
 
     @ManyToOne
+    
     @JoinColumn(name = "carrinho_id")
+    
     private Carrinho carrinho;
 
     @ManyToOne
+    
     @JoinColumn(name = "produto_id")
+
     private Produto produto;
 
     private int quantidade;
+
+    public ItemCarrinho(){
+
+    }
+
+    public ItemCarrinho(Carrinho carrinho, Produto produto, int quantidade) {
+        this.carrinho = carrinho;
+        this.produto = produto;
+        this.quantidade = quantidade;
+    }
 
     public Long getId() {
         return id;
