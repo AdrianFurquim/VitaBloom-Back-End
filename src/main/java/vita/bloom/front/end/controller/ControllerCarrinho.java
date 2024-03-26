@@ -1,6 +1,7 @@
 package vita.bloom.front.end.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +19,7 @@ import vita.bloom.front.end.model.AdicionarItemRequest;
 import vita.bloom.front.end.model.Carrinho;
 import vita.bloom.front.end.model.ItemCarrinho;
 import vita.bloom.front.end.model.ItemCarrinhoDTO;
+import vita.bloom.front.end.model.Produto;
 import vita.bloom.front.end.repository.CarrinhoRepository;
 import vita.bloom.front.end.repository.ItemCarrinhoRepository;
 
@@ -30,11 +33,6 @@ public class ControllerCarrinho {
     CarrinhoService carrinhoService;    
     @Autowired
     ItemCarrinhoRepository itemCarrinhoRepository;
-
-    @Autowired
-    private CarrinhoService carrinhoServicee;
-
-
 
     @GetMapping("/vitabloom/carrinho")
     public List<Carrinho> verCarrinho(){
@@ -71,10 +69,16 @@ public class ControllerCarrinho {
     public void adicionarItemAoCarrinhoo(@RequestBody AdicionarItemRequest request) {
         carrinhoService.adicionarItemAoCarrinho(request);
     }
-    // @GetMapping("/carrinho/itens/ver")
-    // public Iterable<ItemCarrinho> verItensCarrinho(){
-    //     return carrinhoService.findAll();
-    // }
+
+    @PutMapping("/carrinho/modificar/{id}")
+    public void editarQuantiaItemCarrinho(@PathVariable("id") Long idItem, @RequestBody AdicionarItemRequest request) {
+        carrinhoService.editarQuantiaItemCarrinho(idItem, request);
+    }
+
+    @DeleteMapping("/carrinho/item/delete/{id}")
+    public Optional<ItemCarrinho> deletaItem(@PathVariable("id") Long idItem){
+        return carrinhoService.removeItem(idItem);
+    }
 
     @GetMapping("/vitabloom/carrinho/ver")
     public List<ItemCarrinhoDTO> verItensCarrinho(){

@@ -1,5 +1,6 @@
 package vita.bloom.front.end.model;
 import java.util.List;
+import java.util.Optional;
 
 public class AdicionarItemRequest {
     private Long idCarrinho;
@@ -25,6 +26,10 @@ public class AdicionarItemRequest {
     }
     public void setItens(List<ItemCarrinhoDTO> itens) {
         this.itens = itens;
+    }
+
+    public int getQuantidadeOutro(int id) {
+        return itens.get(id).getQuantidade();
     }
 
     

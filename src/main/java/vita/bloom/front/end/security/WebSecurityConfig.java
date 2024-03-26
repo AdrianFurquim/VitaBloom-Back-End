@@ -22,14 +22,16 @@ public class WebSecurityConfig {
             .csrf().disable() // Necessário para permitir acesso ao POST
             .httpBasic(Customizer.withDefaults())
             .authorizeHttpRequests(
-                authorize -> authorize.requestMatchers(HttpMethod.DELETE, "/vitabloom/deletar/{id}").permitAll() //Relato
+                authorize -> authorize.requestMatchers(HttpMethod.DELETE, "/vitabloom/deletar/{id}").permitAll()
                                       .requestMatchers(HttpMethod.GET, "/vitabloom/produtos").permitAll()
-                                      .requestMatchers(HttpMethod.DELETE, "/vitabloom/carrinho/deletar/{id}").permitAll() //Relato
+                                      .requestMatchers(HttpMethod.DELETE, "/vitabloom/carrinho/deletar/{id}").permitAll()
+                                      .requestMatchers(HttpMethod.DELETE, "/carrinho/item/delete/{id}").permitAll()
                                       .requestMatchers(HttpMethod.GET, "/vitabloom/carrinho").permitAll()
                                       .requestMatchers(HttpMethod.POST, "/carrinho/adicionar-itemm").permitAll()
                                       .requestMatchers(HttpMethod.POST, "/carrinho/adicionar-item").permitAll()
                                       .requestMatchers(HttpMethod.GET, "/vitabloom/carrinho/ver").permitAll()
                                       .requestMatchers(HttpMethod.PUT, "/vitabloom/produto/editar/{id}").permitAll()
+                                      .requestMatchers(HttpMethod.PUT, "/carrinho/modificar/{id}").permitAll()
                                       ) 
             .authorizeHttpRequests(
                 authorize -> authorize.requestMatchers(HttpMethod.POST, "/vitabloom/produto/inserir").authenticated()
