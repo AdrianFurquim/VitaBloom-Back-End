@@ -64,6 +64,38 @@ public class CarrinhoService {
         carrinhoRepository.save(carrinho);
     }
 
+    public void removerItemAoCarrinho(AdicionarItemRequest request) {
+        Carrinho carrinho = carrinhoRepository.findById(request.getIdCarrinho())
+                .orElseThrow(() -> new IllegalArgumentException("Carrinho não encontrado: " + request.getIdCarrinho()));
+    
+        for (ItemCarrinhoDTO itemRequest : request.getItens()) {
+            Produto produto = produtoRepository.findById(itemRequest.getProdutoId())
+                    .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado: " + itemRequest.getProdutoId()));
+    
+            // Verifica se o produto já existe no carrinho
+            boolean produtoExistente = false;
+            for (ItemCarrinho itemCarrinho : carrinho.getItens()) {
+                if (itemCarrinho.getProduto().getIdProduto().equals(itemRequest.getProdutoId())) {
+                    // O produto já existe no carrinho, então atualiza a quantidade
+                    itemCarrinho.setQuantidade(itemCarrinho.getQuantidade() - 1);
+                    produtoExistente = true;
+                    break;
+                }
+            }
+    
+            // Se o produto não existir no carrinho, adiciona um novo item
+            if (!produtoExistente) {
+                ItemCarrinho novoItem = new ItemCarrinho();
+                novoItem.setProduto(produto);
+                novoItem.setQuantidade(itemRequest.getQuantidade());
+                novoItem.setCarrinho(carrinho);
+                carrinho.getItens().add(novoItem);
+            }
+        }
+    
+        carrinhoRepository.save(carrinho);
+    }
+
     // Remover Item do Carrinho por ID =============================================================================================================================
     public Optional<ItemCarrinho> removeItem(Long itemId){
         itemCarrinhoRepository.deleteById(itemId);

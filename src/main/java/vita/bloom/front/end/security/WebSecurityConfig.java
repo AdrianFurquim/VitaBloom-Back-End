@@ -29,6 +29,7 @@ public class WebSecurityConfig {
                                       .requestMatchers(HttpMethod.GET, "/vitabloom/carrinho").permitAll()
                                       .requestMatchers(HttpMethod.POST, "/carrinho/adicionar-itemm").permitAll()
                                       .requestMatchers(HttpMethod.POST, "/carrinho/adicionar-item").permitAll()
+                                      .requestMatchers(HttpMethod.POST, "/carrinho/remover-item").permitAll()
                                       .requestMatchers(HttpMethod.GET, "/vitabloom/carrinho/ver").permitAll()
                                       .requestMatchers(HttpMethod.PUT, "/vitabloom/produto/editar/{id}").permitAll()
                                       .requestMatchers(HttpMethod.PUT, "/carrinho/modificar/{id}").permitAll()

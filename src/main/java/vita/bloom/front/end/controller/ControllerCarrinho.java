@@ -61,6 +61,12 @@ public class ControllerCarrinho {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PostMapping("/carrinho/remover-item")
+    public ResponseEntity<?> removerItemAoCarrinho(@RequestBody AdicionarItemRequest requestDTO) {
+        carrinhoService.removerItemAoCarrinho(requestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
     public void CarrinhoController(CarrinhoService carrinhoService) {
         this.carrinhoService = carrinhoService;
     }
