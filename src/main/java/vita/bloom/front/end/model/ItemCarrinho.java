@@ -18,22 +18,26 @@ public class ItemCarrinho {
 
     @ManyToOne
     
+    // Para fazer as tabelas com as chaves
     @JoinColumn(name = "carrinho_id")
     
     private Carrinho carrinho;
 
     @ManyToOne
     
+    // Para fazer as tabelas com as chaves.
     @JoinColumn(name = "produto_id")
 
     private Produto produto;
 
     private int quantidade;
 
+    // Contrutor vazio para JDBC.
     public ItemCarrinho(){
 
     }
 
+    // Contrutor de ItemCarrinho
     public ItemCarrinho(Carrinho carrinho, Produto produto, int quantidade) {
         this.carrinho = carrinho;
         this.produto = produto;
@@ -72,5 +76,4 @@ public class ItemCarrinho {
         this.quantidade = quantidade;
     }
 
-    
 }

@@ -24,16 +24,19 @@ public class ControllerProduto {
     @Autowired
     ProdutoRepository produtosRepository;
 
+    // GET para ver os produtos do banco de dados.
     @GetMapping("/vitabloom/produtos")
     public List<Produto> verProdutos() {
         return (List<Produto>) produtosRepository.findAll();
     }
 
+    // POST para inserir os produtos no banco de dados.
     @PostMapping("/vitabloom/produto/inserir")
     public List<Produto> inserirProduto(@RequestBody List<Produto> produtosLista){
         return (List<Produto>) produtosRepository.saveAll(produtosLista);
     }
     
+    // DELETE para deletar um item do banco de dados através do ID do produto.
     @DeleteMapping("/vitabloom/deletar/{id}")
     public String removeProduto(@PathVariable("id") Long idProduto){
 
@@ -45,6 +48,7 @@ public class ControllerProduto {
         }
     }
     
+    // PUT para realizar a modificação dos dados de algum item através do ID do produto.
     @PutMapping("/vitabloom/produto/editar/{id}")
     public Produto editarProduto(@PathVariable("id") Long idProduto, @RequestBody Produto produtoAtualizado){
         Optional<Produto> produtoExistenteOptional = produtosRepository.findById(idProduto);
@@ -53,12 +57,12 @@ public class ControllerProduto {
         produtoExistente.setNomeProduto(produtoAtualizado.getNomeProduto());
         produtoExistente.setValorProduto(produtoAtualizado.getValorProduto());
         produtoExistente.setDescricaoProduto(produtoAtualizado.getDescricaoProduto());
-        // Defina outros campos conforme necessário
-        
+
         return produtosRepository.save(produtoExistente);
-    } else {
-        return null; 
+        } else {
+            return null; 
+        }
+
     }
-}
 
 }

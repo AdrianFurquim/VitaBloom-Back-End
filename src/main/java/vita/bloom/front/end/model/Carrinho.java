@@ -3,21 +3,15 @@ package vita.bloom.front.end.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import vita.bloom.front.end.repository.ItemCarrinhoRepository;
 
 @Entity
 public class Carrinho {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +20,7 @@ public class Carrinho {
     @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL)
     protected List<ItemCarrinho> itens = new ArrayList<>();
 
-    
-    // outros atributos e métodos
-
+    // Construtor vazio para JDBC.
     public Carrinho() {
     }
 

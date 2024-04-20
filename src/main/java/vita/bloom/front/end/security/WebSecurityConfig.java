@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    // Dentro de WebSecurityConfig
+    // Dentro de WebSecurityConfig.
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
@@ -42,12 +42,12 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    // Dentro de WebSecurityConfig
+    // Dentro de WebSecurityConfig para segurança .
     @Bean
     public UserDetailsService userDetailsService() {
          UserDetails user = User.withDefaultPasswordEncoder()
-             .username("connectdengue")
-             .password("connectdengue")
+             .username("VitaBloom")
+             .password("VitaBloom123")
              .build();
 
          return new InMemoryUserDetailsManager(user);

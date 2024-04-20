@@ -14,10 +14,12 @@ public class Produto {
     protected double valorProduto;
     protected String descricaoProduto;
 
+    // Contrutor vazio pelo JDBC.
     public Produto(){
 
     }
 
+    // Contrutor  do produto.
     public Produto(String nomeProduto, double valorProduto, String descricaoProduto) {
         this.nomeProduto = nomeProduto;
         this.valorProduto = valorProduto;
@@ -56,5 +58,4 @@ public class Produto {
         this.idProduto = idProduto;
     }
 
-    
 }

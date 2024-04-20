@@ -9,20 +9,18 @@ public class ItemCarrinhoDTO {
     private Optional<Produto> produto;
     private Optional<Carrinho> carrinho;
 
+    // Contrutor vazio pelo JDBC.
     public ItemCarrinhoDTO(){
         
     }
 
-    
-
+    // Contrutor de ItemCarrinhoDTO.
     public ItemCarrinhoDTO(Long produtoId, int quantidade, Optional<Produto> produto, Optional<Carrinho> carrinho) {
         this.produtoId = produtoId;
         this.quantidade = quantidade;
         this.produto = produto;
         this.carrinho = carrinho;
     }
-
-
 
     public Long getProdutoId() {
         return produtoId;
@@ -55,10 +53,5 @@ public class ItemCarrinhoDTO {
     public void setCarrinho(Optional<Carrinho> optional) {
         this.carrinho = optional;
     }
-
-    
-
-    
-
     
 }
