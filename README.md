@@ -35,9 +35,9 @@ O projeto esta ainda em andamento e sendo construido aos poucos com seu Front-En
 <h4 align="center"> 
     📁 - Iniciando o Projeto
 </h4>
-Iniciar a aplicação: O projeto foi feito com o uso da ferramenta Visual Studio Code junto a extensão Thunder Client, é necessário ter uma IDE com o suporte ao Java para que funcione na maquina corretamente ou parecidos. Tendo isso, é preciso possuir uma maneira de ativar um servidor MySQL, seja por meio 
-de um xampp ou de qualquer outra ferramenta para fazer a utilização do localhost em sua máquina, e criar uma tabela chamada "vita_bloom". Tendo feito estes requisitos em seu computador, basta rodar o código acima.
-
+Iniciar a aplicação: O projeto foi feito com o uso da ferramenta Visual Studio Code junto a extensão Thunder Client, é necessário ter uma IDE com o suporte ao Java para que funcione na maquina corretamente ou parecidos. Tendo isso, é preciso possuir uma maneira de ativar um servidor MySQL, seja por meio de um xampp ou de qualquer outra ferramenta para fazer a utilização do localhost em sua máquina. Após isto, é preciso que importe o Banco de Dados que esta disponível junto ao back-end, agora é só rodar o java que seu back end estará funcionando.
+</br></br>
+Feito isso, seguimos para o 2 passo no front-end para melhor experiência, segue o Link: https://github.com/AdrianFurquim/VitaBloom-Front-End.git
 <h4 align="center"> 
     Equipe composta por:
 </h4>
