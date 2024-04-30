@@ -53,16 +53,15 @@ public class ControllerProduto {
     public Produto editarProduto(@PathVariable("id") Long idProduto, @RequestBody Produto produtoAtualizado){
         Optional<Produto> produtoExistenteOptional = produtosRepository.findById(idProduto);
         if (produtoExistenteOptional.isPresent()) {
-        Produto produtoExistente = produtoExistenteOptional.get();
-        produtoExistente.setNomeProduto(produtoAtualizado.getNomeProduto());
-        produtoExistente.setValorProduto(produtoAtualizado.getValorProduto());
-        produtoExistente.setDescricaoProduto(produtoAtualizado.getDescricaoProduto());
+            Produto produtoExistente = produtoExistenteOptional.get();
+            produtoExistente.setNomeProduto(produtoAtualizado.getNomeProduto());
+            produtoExistente.setValorProduto(produtoAtualizado.getValorProduto());
+            produtoExistente.setDescricaoProduto(produtoAtualizado.getDescricaoProduto());
 
-        return produtosRepository.save(produtoExistente);
+            return produtosRepository.save(produtoExistente);
         } else {
             return null; 
         }
-
     }
 
 }

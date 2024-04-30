@@ -17,20 +17,16 @@ public class Carrinho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long idCarrinho;
 
-    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL)
+    
+    @OneToMany(cascade = CascadeType.ALL)
     protected List<ItemCarrinho> itens = new ArrayList<>();
 
     // Construtor vazio para JDBC.
     public Carrinho() {
     }
 
-    public void adicionarItem(ItemCarrinho item) {
-        this.itens.add(item);
-        item.setCarrinho(this);
-    }
-
-    public List<ItemCarrinho> getItens() {
-        return this.itens;
+    public Carrinho(List<ItemCarrinho> itens) {
+        this.itens = itens;
     }
 
     public Long getIdCarrinho() {
@@ -41,13 +37,28 @@ public class Carrinho {
         this.idCarrinho = idCarrinho;
     }
 
+    public List<ItemCarrinho> getItens() {
+        return itens;
+    }
+
     public void setItens(List<ItemCarrinho> itens) {
         this.itens = itens;
     }
 
-    public Long getId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    public void addItem(ItemCarrinho item){
+        this.itens.add(item);
+    }
+
+    public void removeItem(ItemCarrinho item){
+        this.itens.remove(item);
+    }
+    
+    public void removeItemById(Long idItem){
+        this.itens.removeIf(itens -> itens.getId().equals(idItem));
+    }
+
+    public void addQuantidadeProduto(int quantidade){
+        ((Carrinho) this.itens).addQuantidadeProduto(quantidade);
     }
 
 }

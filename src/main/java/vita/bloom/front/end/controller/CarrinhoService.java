@@ -53,7 +53,7 @@ public class CarrinhoService {
                 ItemCarrinho novoItem = new ItemCarrinho();
                 novoItem.setProduto(produto);
                 novoItem.setQuantidade(itemRequest.getQuantidade());
-                novoItem.setCarrinho(carrinho);
+                // novoItem.setCarrinho(carrinho);
     
                 carrinho.getItens().add(novoItem);
             }
@@ -86,7 +86,7 @@ public class CarrinhoService {
                 ItemCarrinho novoItem = new ItemCarrinho();
                 novoItem.setProduto(produto);
                 novoItem.setQuantidade(itemRequest.getQuantidade());
-                novoItem.setCarrinho(carrinho);
+                // novoItem.setCarrinho(carrinho);
                 carrinho.getItens().add(novoItem);
             }
         }
@@ -116,10 +116,10 @@ public class CarrinhoService {
 
         for (ItemCarrinho itemCarrinho : itensCarrinho) {
             ItemCarrinhoDTO itemCarrinhoDTO = new ItemCarrinhoDTO();
-            itemCarrinhoDTO.setProdutoId(itemCarrinho.getId());
+            //itemCarrinhoDTO.setProdutoId(itemCarrinho.getId());
             itemCarrinhoDTO.setQuantidade(itemCarrinho.getQuantidade());
             itemCarrinhoDTO.setProduto(produtoRepository.findById(itemCarrinho.getProduto().getIdProduto()));
-            itemCarrinhoDTO.setCarrinho(null);
+            //itemCarrinhoDTO.setCarrinho(null);
             itensCarrinhoDTO.add(itemCarrinhoDTO);
         }
 

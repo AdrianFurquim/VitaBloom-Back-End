@@ -1,9 +1,7 @@
 package vita.bloom.front.end.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,18 +14,9 @@ public class ItemCarrinho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //
     @ManyToOne
-    
-    // Para fazer as tabelas com as chaves
-    @JoinColumn(name = "carrinho_id")
-    
-    private Carrinho carrinho;
-
-    @ManyToOne
-    
-    // Para fazer as tabelas com as chaves.
-    @JoinColumn(name = "produto_id")
-
+    @JoinColumn(name = "idProduto")
     private Produto produto;
 
     private int quantidade;
@@ -38,8 +27,7 @@ public class ItemCarrinho {
     }
 
     // Contrutor de ItemCarrinho
-    public ItemCarrinho(Carrinho carrinho, Produto produto, int quantidade) {
-        this.carrinho = carrinho;
+    public ItemCarrinho(Produto produto, int quantidade) {        
         this.produto = produto;
         this.quantidade = quantidade;
     }
@@ -50,14 +38,6 @@ public class ItemCarrinho {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Carrinho getCarrinho() {
-        return carrinho;
-    }
-
-    public void setCarrinho(Carrinho carrinho) {
-        this.carrinho = carrinho;
     }
 
     public Produto getProduto() {
@@ -74,6 +54,10 @@ public class ItemCarrinho {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public void addQuantidadeProduto(int quantidade){
+        this.quantidade = (this.quantidade + quantidade);
     }
 
 }
