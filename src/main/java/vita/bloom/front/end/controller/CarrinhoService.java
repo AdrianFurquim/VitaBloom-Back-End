@@ -37,7 +37,7 @@ public class CarrinhoService {
             Produto produto = produtoRepository.findById(itemRequest.getProdutoId())
                     .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado: " + itemRequest.getProdutoId()));
     
-            // Verifica se o produto já existe no carrinho.
+            // Verifica se o produto já existe no carrinh.
             boolean produtoExistente = false;
             for (ItemCarrinho itemCarrinho : carrinho.getItens()) {
                 if (itemCarrinho.getProduto().getIdProduto().equals(itemRequest.getProdutoId())) {
