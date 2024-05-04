@@ -1,6 +1,5 @@
 package vita.bloom.front.end.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.micrometer.common.lang.NonNull;
-import vita.bloom.front.end.model.Carrinho;
 import vita.bloom.front.end.model.ItemCarrinho;
 import vita.bloom.front.end.model.Usuarios;
 import vita.bloom.front.end.repository.CarrinhoRepository;
@@ -27,7 +24,6 @@ public class ControllerUsuario {
 
     @Autowired
     UsuarioRepository usuarioRepository;
-
     @Autowired
     CarrinhoRepository carrinhoRepository;
 
@@ -90,7 +86,6 @@ public class ControllerUsuario {
             usuarioExistente.setIdUsuario(usuarioAtualizado.getIdUsuario());
             usuarioExistente.setNome(usuarioAtualizado.getNome());
             usuarioExistente.setSenha(usuarioAtualizado.getSenha());
-
             return usuarioRepository.save(usuarioExistente);
         } else {
             return null; 
@@ -100,32 +95,29 @@ public class ControllerUsuario {
     @PutMapping("/vitabloom/usuario/adicionaritem/{id}")
     public Usuarios adicionaItemAoCarrinhoUsuario(@PathVariable("id") Long idUsuario, @RequestBody ItemCarrinho itensAdicionar) {
         Optional<Usuarios> usuarioExistenteOptional = usuarioRepository.findById(idUsuario);
-    
         if (usuarioExistenteOptional.isPresent()) {
             Usuarios usuarioExistente = usuarioExistenteOptional.get();
             List<ItemCarrinho> itensCarrinho = usuarioExistente.getCarrinho().getItens();
-            
-            // Verificar se o produto já está no carrinho
+            // Verificar se o produto já está no carrinho.
             boolean produtoExistente = false;
             for (ItemCarrinho itemCarrinho : itensCarrinho) {
                 if (itemCarrinho.getProduto().getIdProduto().equals(itensAdicionar.getProduto().getIdProduto())) {
-                    // Produto já está no carrinho, incrementar quantidade
+                    // Produto já está no carrinho, incrementar quantidade.
                     itemCarrinho.setQuantidade(itemCarrinho.getQuantidade() + itensAdicionar.getQuantidade());
                     produtoExistente = true;
                     break;
                 }
             }
-            
             if (!produtoExistente) {
                 // Produto não existe no carrinho, adicionar novo item
                 usuarioExistente.addItemCarrinho(itensAdicionar);
-            }
-    
+            }    
             return usuarioRepository.save(usuarioExistente);
         }
         return null;
     }
 
+    // PUT para que possa excluir um item do carrinho com o id do usuario e do item.
     @PutMapping("/vitabloom/usuario/removeitem/{idUsuario}/{idItem}")
     public Usuarios removeItemAoCarrinhoUsuario(@PathVariable("idUsuario") Long idUsuario, @PathVariable("idItem") Long idItem){
         Optional<Usuarios> usuarioExistenteOptional = usuarioRepository.findById(idUsuario);
@@ -137,7 +129,5 @@ public class ControllerUsuario {
             return null;
         }
     }
-    
-
     
 }

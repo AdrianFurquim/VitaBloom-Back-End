@@ -37,7 +37,7 @@ public class ControllerProduto {
     }
     
     // DELETE para deletar um item do banco de dados através do ID do produto.
-    @DeleteMapping("/vitabloom/deletar/{id}")
+    @DeleteMapping("/vitabloom/produto/deletar/{id}")
     public String removeProduto(@PathVariable("id") Long idProduto){
 
         if(produtosRepository.existsById(idProduto)){
