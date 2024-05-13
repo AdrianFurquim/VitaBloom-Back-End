@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Mar-2024 às 19:51
+-- Tempo de geração: 13-Maio-2024 às 21:07
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -20,36 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `vita_bloom`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `carrinho`
---
-
-CREATE TABLE `carrinho` (
-  `id_carrinho` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `carrinho`
---
-
-INSERT INTO `carrinho` (`id_carrinho`) VALUES
-(1);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `item_carrinho`
---
-
-CREATE TABLE `item_carrinho` (
-  `id` bigint(20) NOT NULL,
-  `quantidade` int(11) NOT NULL,
-  `carrinho_id` bigint(20) DEFAULT NULL,
-  `produto_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -87,20 +57,6 @@ INSERT INTO `produto` (`id_produto`, `descricao_produto`, `nome_produto`, `valor
 --
 
 --
--- Índices para tabela `carrinho`
---
-ALTER TABLE `carrinho`
-  ADD PRIMARY KEY (`id_carrinho`);
-
---
--- Índices para tabela `item_carrinho`
---
-ALTER TABLE `item_carrinho`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FKr3dusq21jhlttwc4hanxhlbua` (`carrinho_id`),
-  ADD KEY `FK7he6x1mtdwm4fmlsa09yxjifx` (`produto_id`);
-
---
 -- Índices para tabela `produto`
 --
 ALTER TABLE `produto`
@@ -111,33 +67,10 @@ ALTER TABLE `produto`
 --
 
 --
--- AUTO_INCREMENT de tabela `carrinho`
---
-ALTER TABLE `carrinho`
-  MODIFY `id_carrinho` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `item_carrinho`
---
-ALTER TABLE `item_carrinho`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
-
---
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id_produto` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `item_carrinho`
---
-ALTER TABLE `item_carrinho`
-  ADD CONSTRAINT `FK7he6x1mtdwm4fmlsa09yxjifx` FOREIGN KEY (`produto_id`) REFERENCES `produto` (`id_produto`),
-  ADD CONSTRAINT `FKr3dusq21jhlttwc4hanxhlbua` FOREIGN KEY (`carrinho_id`) REFERENCES `carrinho` (`id_carrinho`);
+  MODIFY `id_produto` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

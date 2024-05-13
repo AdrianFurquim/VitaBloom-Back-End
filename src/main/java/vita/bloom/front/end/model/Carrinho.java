@@ -12,42 +12,91 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Carrinho {
-
+    /**
+     *  Gerando o ID unico do carrinho.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long idCarrinho;
-
-    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL)
+    
+    /**
+     *  Um para muitos pois um carrinho pode ter vários Itens.
+     */
+    @OneToMany(cascade = CascadeType.ALL)
     protected List<ItemCarrinho> itens = new ArrayList<>();
 
-    // Construtor vazio para JDBC.
+    /**
+     *  Contrutor vazio para JDBC.
+     */
     public Carrinho() {
     }
 
-    public void adicionarItem(ItemCarrinho item) {
-        this.itens.add(item);
-        item.setCarrinho(this);
+    /**
+     * @param itens
+     *  Contrutor para o carrinho.
+     */
+    public Carrinho(List<ItemCarrinho> itens) {
+        this.itens = itens;
     }
 
-    public List<ItemCarrinho> getItens() {
-        return this.itens;
-    }
-
+    /**
+     * @return
+     */
     public Long getIdCarrinho() {
         return idCarrinho;
     }
 
+    /**
+     * @param idCarrinho
+     */
     public void setIdCarrinho(Long idCarrinho) {
         this.idCarrinho = idCarrinho;
     }
 
+    /**
+     * @return
+     */
+    public List<ItemCarrinho> getItens() {
+        return itens;
+    }
+
+    /**
+     * @param itens
+     */
     public void setItens(List<ItemCarrinho> itens) {
         this.itens = itens;
     }
 
-    public Long getId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    /**
+     * @param item
+     *  Função para adicionar um item ao array do carrinho.
+     */
+    public void addItem(ItemCarrinho item){
+        this.itens.add(item);
+    }
+
+    /**
+     * @param item
+     *  Função para remover o item do carrinho pelo próprio item.
+     */
+    public void removeItem(ItemCarrinho item){
+        this.itens.remove(item);
+    }
+    
+    /**
+     * @param idItem
+     *  Função para remover o item do array do carrinho pelo ID do item.
+     */
+    public void removeItemById(Long idItem){
+        this.itens.removeIf(itens -> itens.getId().equals(idItem));
+    }
+
+    /**
+     * @param quantidade
+     *  Função para adicionar ou diminuir a quantidade de item do produto no carrinho.
+     */
+    public void addQuantidadeProduto(int quantidade){
+        ((Carrinho) this.itens).addQuantidadeProduto(quantidade);
     }
 
 }

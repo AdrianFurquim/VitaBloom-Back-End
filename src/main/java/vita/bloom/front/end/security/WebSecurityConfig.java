@@ -22,23 +22,29 @@ public class WebSecurityConfig {
             .csrf().disable() // Necessário para permitir acesso ao POST
             .httpBasic(Customizer.withDefaults())
             .authorizeHttpRequests(
-                authorize -> authorize.requestMatchers(HttpMethod.DELETE, "/vitabloom/deletar/{id}").permitAll()
-                                      .requestMatchers(HttpMethod.GET, "/vitabloom/produtos").permitAll()
-                                      .requestMatchers(HttpMethod.DELETE, "/vitabloom/carrinho/deletar/{id}").permitAll()
-                                      .requestMatchers(HttpMethod.DELETE, "/carrinho/item/delete/{id}").permitAll()
-                                      .requestMatchers(HttpMethod.GET, "/vitabloom/carrinho").permitAll()
-                                      .requestMatchers(HttpMethod.POST, "/carrinho/adicionar-itemm").permitAll()
-                                      .requestMatchers(HttpMethod.POST, "/carrinho/adicionar-item").permitAll()
-                                      .requestMatchers(HttpMethod.POST, "/carrinho/remover-item").permitAll()
-                                      .requestMatchers(HttpMethod.GET, "/vitabloom/carrinho/ver").permitAll()
-                                      .requestMatchers(HttpMethod.PUT, "/vitabloom/produto/editar/{id}").permitAll()
-                                      .requestMatchers(HttpMethod.PUT, "/carrinho/modificar/{id}").permitAll()
-                                      ) 
+                authorize -> authorize
+                                    // URLs Produtos.
+                                    .requestMatchers(HttpMethod.DELETE, "/vitabloom/deletar/{id}").permitAll()
+                                    .requestMatchers(HttpMethod.GET, "/vitabloom/produtos").permitAll()
+                                    .requestMatchers(HttpMethod.PUT, "/vitabloom/produto/editar/{id}").permitAll()
+                                    // URLs Carrinho.
+                                    .requestMatchers(HttpMethod.GET, "/vitabloom/carrinho").permitAll()
+                                    .requestMatchers(HttpMethod.DELETE, "/vitabloom/carrinho/deletar/{id}").permitAll()
+                                    // URLs Usuários.
+                                    .requestMatchers(HttpMethod.GET, "/vitabloom/usuarios/verificar/{email}/{senha}").permitAll()
+                                    .requestMatchers(HttpMethod.GET, "/vitabloom/usuarios/verificar/email/{email}").permitAll()
+                                    .requestMatchers(HttpMethod.GET, "/vitabloom/usuarios/listarid/{idUsuario}").permitAll()
+                                    .requestMatchers(HttpMethod.GET, "/vitabloom/usuarios/listar").permitAll()
+                                    .requestMatchers(HttpMethod.POST, "/vitabloom/usuarios/inserir").permitAll()
+                                    .requestMatchers(HttpMethod.PUT, "/vitabloom/usuario/editar/{id}").permitAll()
+                                    .requestMatchers(HttpMethod.PUT, "/vitabloom/usuario/adicionaritem/{id}").permitAll()
+                                    .requestMatchers(HttpMethod.PUT, "/vitabloom/usuario/removeitem/{idUsuario}/{idItem}").permitAll()
+                                    .requestMatchers(HttpMethod.DELETE, "/vitabloom/usuario/delete/{id}").permitAll()
+                                      )
             .authorizeHttpRequests(
                 authorize -> authorize.requestMatchers(HttpMethod.POST, "/vitabloom/produto/inserir").authenticated()
                 .requestMatchers(HttpMethod.POST, "/vitabloom/carrinho/inserir").authenticated()
                                     );
-
         return http.build();
     }
 
@@ -52,4 +58,5 @@ public class WebSecurityConfig {
 
          return new InMemoryUserDetailsManager(user);
      }
+
 }
