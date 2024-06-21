@@ -6,12 +6,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import vita.bloom.front.end.security.service.AdminDetailsService;
@@ -28,9 +25,10 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(
                 authorize -> authorize
                         // URLs Produtos.
-                        .requestMatchers(HttpMethod.DELETE, "/vitabloom/deletar/{id}").permitAll()
                         .requestMatchers(HttpMethod.GET, "/vitabloom/produtos").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/vitabloom/produto/{id}").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/vitabloom/produto/editar/{id}").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/vitabloom/deletar/{id}").permitAll()
                         // URLs Carrinho.
                         .requestMatchers(HttpMethod.GET, "/vitabloom/carrinho").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/vitabloom/carrinho/deletar/{id}").permitAll()
@@ -59,11 +57,6 @@ public class WebSecurityConfig {
     // Dentro de WebSecurityConfig para segurança .
     @Bean
     public UserDetailsService userDetailsService() {
-        //  UserDetails user = User.withDefaultPasswordEncoder()
-        //      .username("VitaBloom")
-        //      .password("VitaBloom123")
-        //      .build();
-        //  return new InMemoryUserDetailsManager(user);
         return new AdminDetailsService();
      }
 

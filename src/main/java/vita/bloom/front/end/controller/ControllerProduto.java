@@ -33,6 +33,13 @@ public class ControllerProduto {
         return (List<Produto>) produtosRepository.findAll();
     }
 
+    // GET para ver produtos através do ID.
+    @GetMapping("/vitabloom/produto/{id}")
+    public Optional<Produto> verProdutosId(@PathVariable("id") @NonNull Long idProduto) {
+        // Retorna o determinado produto com o id fornecido.
+        return produtosRepository.findById(idProduto);
+    }
+
     // POST para inserir os produtos no banco de dados.
     @PostMapping("/vitabloom/produto/inserir")
     public List<Produto> inserirProduto(@RequestBody @NonNull List<Produto> produtosLista){
