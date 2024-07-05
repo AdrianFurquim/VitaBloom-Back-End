@@ -35,7 +35,18 @@ O projeto esta ainda em andamento e sendo construido aos poucos com seu Front-En
 <h4 align="center"> 
     📁 - Iniciando o Projeto
 </h4>
-Iniciar a aplicação: O projeto foi feito com o uso da ferramenta Visual Studio Code junto a extensão Thunder Client, é necessário ter uma IDE com o suporte ao Java para que funcione na maquina corretamente ou parecidos. Tendo isso, é preciso possuir uma maneira de ativar um servidor MySQL, seja por meio de um xampp ou de qualquer outra ferramenta para fazer a utilização do localhost em sua máquina. Após isto, é preciso que importe o Banco de Dados que esta disponível junto ao back-end, agora é só rodar o java que seu back end estará funcionando.
+Iniciar a aplicação: O projeto foi feito com o uso da ferramenta Visual Studio Code junto a extensão Thunder Client, é necessário ter uma IDE com o suporte ao Java para que funcione na maquina corretamente ou parecidos. Tendo isso, é preciso possuir uma maneira de ativar um servidor MySQL, seja por meio de um xampp ou de qualquer outra ferramenta para fazer a utilização do localhost em sua máquina.<br><br>
+
+Precisamos inicialmente ativar nosso servidos SQL, logo após isso, iremos criar um novo esquema chamado: 'vita_bloom'.<br><br>
+
+Possivelmente você terá sua senha e usuário do seu banco de dados, para isso, em: <br><br>
+ - /src/main/resourse/application.proprieties
+<br><br>
+Teremos duas linhas: <br><br>
+ - spring.datasource.username= <br>
+ - spring.datasource.password= <br><br>
+Nessas duas linhas, coloque seu respectivo username e seu password de seu banco de dados. <br><br>
+Após isto, é preciso que importe o Banco de Dados que esta disponível junto ao back-end, agora é só rodar o java que seu back end estará funcionando.
 
 
 <h4 align="center"> 
