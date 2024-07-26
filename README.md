@@ -1,66 +1,67 @@
-<h1 align="center"> Vita Bloom Back-End </h1>
+# Vita Bloom Back-End
+
+<h1 align="center">Vita Bloom Back-End</h1>
 
 <div align="center">
-
-
-![logo Vita Bloom](https://github.com/AdrianFurquim/VitaBloom-Back-End/assets/116688048/0b5a8582-c31e-45bb-93ea-67ed58191def)
-
-
+  <img src="https://github.com/AdrianFurquim/VitaBloom-Back-End/assets/116688048/0b5a8582-c31e-45bb-93ea-67ed58191def" alt="logo Vita Bloom" />
 </div>
 
+Bem-vindo ao Back-End do site Vita Bloom! Abaixo estão detalhes sobre a estrutura do projeto e como iniciar a aplicação.
 
-Bem-vindo ao Back-End do site Vita Bloom!
-Abaixo estão detalhes sobre a estrutura do projeto e como iniciar a aplicação.
+## Tecnologias Utilizadas
 
-<ul>
-  <li>Back-End - Técnologias utilizadas: 
-    <ul>
-      <li>Java</li>
-      <li>Spring Boot</li>
-      <li>Spring Secutity</li>
-      <li>CRUD</li>
-      <li>MVC (Model, Controller, View)</li>
-      <li>Mavin</li>
-      <li>MySQL</li>
-    </ul>
-  </li>
-</ul>
+### Back-End
+- **Java**
+- **Spring Boot**
+- **Spring Security**
+- **CRUD**
+- **MVC (Model, Controller, View)**
+- **Maven**
+- **MySQL**
 
-<h4 align="center"> 
-    :construction:  Projeto Em Andamento  :construction:
-</h4>
+<h4 align="center">:construction: Projeto Em Andamento :construction:</h4>
+<p align="center">O projeto ainda está em andamento e sendo construído aos poucos com seu Front-End disponível no repositório: [Vita Bloom Front-End](https://github.com/AdrianFurquim/VitaBloom-Front-End.git).</p>
 
-O projeto esta ainda em andamento e sendo construido aos poucos com seu Front-End no repositório: https://github.com/AdrianFurquim/VitaBloom-Front-End.git
+## Iniciando o Projeto
 
-<h4 align="center"> 
-    📁 - Iniciando o Projeto
-</h4>
-Iniciar a aplicação: O projeto foi feito com o uso da ferramenta Visual Studio Code junto a extensão Thunder Client, é necessário ter uma IDE com o suporte ao Java para que funcione na maquina corretamente ou parecidos. Tendo isso, é preciso possuir uma maneira de ativar um servidor MySQL, seja por meio de um xampp ou de qualquer outra ferramenta para fazer a utilização do localhost em sua máquina.<br><br>
+### Passo 1: Configuração do Ambiente
 
-Precisamos inicialmente ativar nosso servidos SQL, logo após isso, iremos criar um novo esquema chamado: 'vita_bloom'.<br><br>
+1. **Ferramentas Necessárias:**
+   - IDE com suporte a Java (ex: IntelliJ, Eclipse, Visual Studio Code com extensão Thunder Client).
+   - MySQL para o banco de dados (pode ser configurado usando XAMPP ou outra ferramenta).
 
-Possivelmente você terá sua senha e usuário do seu banco de dados, para isso, em: <br><br>
- - /src/main/resourse/application.proprieties
-<br><br>
-Teremos duas linhas: <br><br>
- - spring.datasource.username= <br>
- - spring.datasource.password= <br><br>
-Nessas duas linhas, coloque seu respectivo username e seu password de seu banco de dados. <br><br>
-Após isto, é preciso que importe o Banco de Dados que esta disponível junto ao back-end, agora é só rodar o java que seu back end estará funcionando.
+2. **Configuração do Banco de Dados:**
+   - Ative seu servidor MySQL.
+   - Crie um novo esquema chamado `vita_bloom`.
 
+3. **Configuração do Projeto:**
+   - Clone este repositório.
+   - Abra o projeto em sua IDE de preferência.
+   - Edite o arquivo `application.properties` localizado em `/src/main/resources/application.properties` para configurar seu nome de usuário e senha do banco de dados:
+     ```properties
+     spring.datasource.username=seu_username
+     spring.datasource.password=sua_senha
+     ```
 
-<h4 align="center"> 
-    ? - Como Funciona - ?
-</h4>
+4. **Importação do Banco de Dados:**
+   - Importe o banco de dados disponível junto ao projeto.
 
-O projeto funciona conforme uma API consumivel feita via Java com o framework Spring Boot e suas ferramentas. O sistema conta com diversas URLs para fazer requisições ao banco de dados, tais como GET, POST, DELETE e PUT.
-O banco de dados foi feito através de um sistema gerenciador MySQL, onde temos as tabelas Usuário, que possui um valor de tabela segundaria do carrinho, ou seja, cada usuário sempre terá um carrinho. Assim por diante, temos que cada carrinho possui um array de itens, e cada item no carrinho é composto por um produto e a quantidade do mesmo. 
+5. **Iniciar a Aplicação:**
+   - Execute a aplicação Java para iniciar o servidor.
 
-Feito isso, seguimos para o 2 passo no front-end para melhor experiência, segue o Link: https://github.com/AdrianFurquim/VitaBloom-Front-End.git
-<h4 align="center"> 
-    Equipe composta por:
-</h4>
-Adrian Eduardo Furquim de Souza
+## Como Funciona?
 
+O projeto funciona como uma API consumível desenvolvida em Java com o framework Spring Boot. O sistema possui diversas URLs para fazer requisições ao banco de dados, como GET, POST, DELETE e PUT.
 
+### Estrutura do Banco de Dados
 
+O banco de dados foi criado usando MySQL e possui as seguintes tabelas principais:
+- **Usuário:** Cada usuário possui um carrinho.
+- **Carrinho:** Cada carrinho contém um array de itens.
+- **Item:** Cada item no carrinho é composto por um produto e a quantidade do mesmo.
+
+Para uma melhor experiência, siga para o próximo passo no front-end: [Vita Bloom Front-End](https://github.com/AdrianFurquim/VitaBloom-Front-End.git).
+
+## Equipe
+
+- **Adrian Eduardo Furquim de Souza**
